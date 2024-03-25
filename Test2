@@ -1,0 +1,19 @@
+#Дано: список dict-объектов вида вида {"key": "value"}, например [{"key1": "value1"}, {"k1": "v1", "k2": "v2", "k3": "v3"}, {}, {}, {"key1": "value1"}, {"key1": "value1"}, {"key2": "value2"}].
+#Напишите функцию, которая удаляет дубликаты из этого списка. Для примера выше возвращаемое значение может быть равно [{"key1": "value1"}, {"k1": "v1", "k2": "v2", "k3": "v3"}, {}, {"key2": "value2"}].
+#Обязательное условие: функция не должна иметь сложность O(n^2).
+
+def remove_duplicates(dict_list):
+    unique_dicts = {}
+    result = []
+    for dup in dict_list:
+        dict_str = str(dup)  # Преобразуем словарь в строку для хэширования
+        if dict_str not in unique_dicts:
+            unique_dicts[dict_str] = dup
+            result.append(dup)
+    return result
+# Исходный список dict-объектов
+dict_list = [{"key1": "value1"}, {"k1": "v1", "k2": "v2", "k3": "v3"}, {}, {}, {"key1": "value1"}, {"key1": "value1"}, {"key2": "value2"}]
+
+# Удаление дубликатов
+result_list = remove_duplicates(dict_list)
+print(result_list)
